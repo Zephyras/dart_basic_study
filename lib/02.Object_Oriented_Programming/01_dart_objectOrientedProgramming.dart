@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 void main() {
 //   //? Obejct Oriented Programing (OOP 프로그래밍)
 //   // String name2 = "블랙핑크2";
@@ -46,18 +48,58 @@ void main() {
 //   print(bts.firstMember);
 
 ////! 상속~~~~~~~~~~~~
-  print('------------ Idol ----------------');
-  Idol apink = Idol(name: '에이핑크', membersCount: 5);
-  apink.sayName();
-  apink.sayMembersCount();
+//   print('------------ Idol ----------------');
+//   Idol apink = Idol(name: '에이핑크', membersCount: 5);
+//   apink.sayName();
+//   apink.sayMembersCount();
 
-  print('------------ BTS ----------------');
-  BoyGroup bts = BoyGroup('BTS', 7);
-  bts.sayName();
-  bts.sayMembersCount();
-  bts.sayMale();
+//   print('------------ Boy Group ----------------');
+//   BoyGroup bts = BoyGroup('BTS', 7);
+//   bts.sayName();
+//   bts.sayMembersCount();
+//   bts.sayMale(); //보이그룹에 정의 되어 있어서 사용못한다.
+
+//   print('------------ Girl Group ----------------');
+//   GirlGroup redVelvet = GirlGroup('Red Velvet', 5);
+//   redVelvet.sayMembersCount();
+//   redVelvet.sayName();
+//   redVelvet.sayFemale(); //걸그룹에 정의 되어 있어서 사용못한다
+
+//   print('----------- Type Comparison ------------------');
+//   print(apink is Idol);
+//   print(apink is BoyGroup);
+//   print(apink is GirlGroup);
+////! 상속 끝~~~~~~~~~~~~~~
+
+//! method - function(class 내부에 있는 함수)
+//! override - 덮어쓰다 (사전적의미: 우선시하다)
+
+  // TimesTwo tt = TimesTwo(2);
+  // print(tt.calculate());
+
+  // TimesFour tf = TimesFour(2);
+  // print(tf.calculate());
+  //! ovverride 끝
+
+  //!static 시작
+
+  Employee seulgi = Employee('슬기');
+  Employee chorong = Employee('초롱');
+  Employee jenny = Employee('제니');
+
+  //! suelgi.name = '코드팩토리'; 인스턴스 귀속
+  seulgi.name = '코드팩토리';
+  seulgi.printNameAndBuilding();
+  chorong.printNameAndBuilding();
+
+  //! 클래스 귀속
+  Employee.building = '오투타워';
+  seulgi.printNameAndBuilding();
+  chorong.printNameAndBuilding();
+  jenny.printNameAndBuilding();
+
+  Employee.printBuilding();
 }
-
 // //? 클래스, 변수, 함수 분류
 // //* Idol class
 // //* name(이름) - 변수
@@ -135,37 +177,104 @@ void main() {
 //  //}
 
 //! 상속 - inheritance
+//! 상속~~~~~~~~~~~~~~~~~~~~~~~~
 //
 // 상속으 바으면 부모 클랫의 모든 속성을 자식 클래스가 부여 받는다.
-class Idol {
-  //이름
+// class Idol {
+//   //이름
+//   String name;
+//   //멤버 숫자
+//   int membersCount;
+
+//   Idol({
+//     required this.name,
+//     required this.membersCount,
+//   });
+
+//   void sayName() {
+//     print('저는 ${this.name} 입내다.');
+//   }
+
+//   void sayMembersCount() {
+//     print('${this.name}은 ${this.membersCount}명의 멤버가 있습니다.');
+//   }
+// }
+
+// class BoyGroup extends Idol {
+//   //BodyGroup({required super.name, required super.membersCount});
+
+//   BoyGroup(
+//     String name,
+//     int membersCount,
+//   ) : super(name: name, membersCount: membersCount);
+
+//   void sayMale() {
+//     print('저는 남자 아이돌이빈다.');
+//   }
+// }
+
+// class GirlGroup extends Idol {
+//   GirlGroup(
+//     String name,
+//     int membersCount,
+//   ) : super(name: name, membersCount: membersCount);
+
+//   void sayFemale() {
+//     print('저는 여자 아이돌이빈다.');
+//   }
+// }
+//! 상속~~~~~~~~~~~~~~~~~~~~~~~~
+//! 메소드~~~~~~~~~~~ 시작
+//? 메소드!
+// class TimesTwo {
+//   final int number;
+
+//   TimesTwo(
+//     this.number,
+//   );
+
+//   //method
+//   int calculate() {
+//     //! int number;
+//     //! return this.number * 2; //!전역변수명과 함수안에 지역변수선언할때 this.를 해야하는데
+//     //! 이름이 같은경우도 있고 dart 쪽에서는 선호하지 않는 방법이다고 한다.
+//     return number * 2; //< 이렇게 생략해 놓은건 추천한다고함.
+//   }
+// }
+
+// class TimesFour extends TimesTwo {
+//   TimesFour(
+//     int number,
+//   ) : super(number);
+
+//   // @override
+//   // int calculate() {
+//   //   return super.number * 4;
+//   // }
+
+//   @override
+//   int calculate() {
+//     return super.calculate() * 2;
+//   }
+// }
+//! 메소드~~~~~~~~~~~ 끝
+//!static
+//! static은 인스턴스에 귀속되지 않고 클래스에 귀속된다.
+class Employee {
+  // 알바생 일하는 건물
+  static String? building;
+  //알바생 이름
   String name;
-  //멤버 숫자
-  int membersCount;
 
-  Idol({
-    required this.name,
-    required this.membersCount,
-  });
+  Employee(
+    this.name,
+  );
 
-  void sayName() {
-    print('저는 ${this.name} 입내다.');
+  void printNameAndBuilding() {
+    print('제 이름은 $name 입니다. $building 건물에서 근무하고 있습니다.');
   }
 
-  void sayMembersCount() {
-    print('${this.name}은 ${this.membersCount}명의 멤버가 있습니다.');
-  }
-}
-
-class BoyGroup extends Idol {
-  //BodyGroup({required super.name, required super.membersCount});
-
-  BoyGroup(
-    String name,
-    int membersCount,
-  ) : super(name: name, membersCount: membersCount);
-
-  void sayMale() {
-    print('저는 남자 아이돌이빈다.');
+  static void printBuilding() {
+    print('저는 $building 건물에서 근무중입니다.');
   }
 }

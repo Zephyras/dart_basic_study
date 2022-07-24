@@ -5,8 +5,8 @@ void main() {
   //* print('Hello Code Factory');
 
   //! 변수 var Variable이라고 부른다.
-  // var className = "14기 플러터 스타디";
-  // print(className);
+  var className = "14기 플러터 스타디";
+  print(className);
 
   // var studentName = "황교욱";
   // print(studentName);
