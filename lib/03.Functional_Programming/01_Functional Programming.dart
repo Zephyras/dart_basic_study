@@ -1,7 +1,7 @@
 void main() {
   List<String> blackPink = ['로제', '지수', '리사', '제니', '제니'];
-  //? Funtional Programming 함수프로그래밍
-  //? 함수프로그래밍의 기본은 형변환이다.
+  //? F`untional Programming 함수프로그래밍
+  //? 함`수프로그래밍의 기본은 형변환이다.
 
   //! 형변환에 대하여
   print(blackPink);
