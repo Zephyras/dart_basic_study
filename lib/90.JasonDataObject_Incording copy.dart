@@ -13,7 +13,8 @@ void main() {
   var jsonText = jsonEncode(scores);
   print(scores.toString());
   print(jsonText ==
-      '[{"score": 90},{"score": 20},'
-          '{"score": 100,"overtime": true,'
-          '"special_guest": null}]');
+      '[{"score":90},{"score":20},'
+          '{"score":100,"overtime":true,'
+          '"special_guest":null}]');
+  print(jsonText);
 }
